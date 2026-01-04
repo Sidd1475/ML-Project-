@@ -33,7 +33,7 @@ MANIFEST
 *.spec
 
 #Environments 
-.artifact
+
 
 # Installer logs
 pip-log.txt
