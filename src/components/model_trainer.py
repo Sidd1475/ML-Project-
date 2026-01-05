@@ -38,16 +38,56 @@ class ModelTrainer:
             )
             models = {
                 "Linear Regression": LinearRegression(),
-                "Lasso": Lasso(),
-                "Ridge": Ridge(),
                 "K-Neighbors Regressor": KNeighborsRegressor(),
                 "Decision Tree": DecisionTreeRegressor(),
                 "Random Forest Regressor": RandomForestRegressor(),
                 "XGBRegressor": XGBRegressor(), 
                 "AdaBoost Regressor": AdaBoostRegressor()
             }
-        
-            model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,models=models)
+            
+            params = {
+    "Linear Regression": {
+        # LinearRegression has very few tunable hyperparameters
+        # Keeping empty is completely OK
+    },
+
+    "K-Neighbors Regressor": {
+        "n_neighbors": [3, 5, 7, 9],
+        "weights": ["uniform", "distance"],
+        "algorithm": ["auto", "ball_tree", "kd_tree"]
+    },
+
+    "Decision Tree": {
+        "criterion": ["squared_error", "friedman_mse"],
+        "max_depth": [None, 5, 10, 20],
+        "min_samples_split": [2, 5, 10]
+    },
+
+    "Random Forest Regressor": {
+        "n_estimators": [50, 100],
+        "max_depth": [None, 10, 20],
+        "min_samples_split": [2, 5],
+        "n_jobs": [-1]
+    },
+
+    "XGBRegressor": {
+        "n_estimators": [50, 100],
+        "learning_rate": [0.05, 0.1],
+        "max_depth": [3, 5, 7],
+        "subsample": [0.8, 1.0]
+    },
+
+    "AdaBoost Regressor": {
+        "n_estimators": [50, 100],
+        "learning_rate": [0.05, 0.1, 0.5],
+        "loss": ["linear", "square"]
+    }
+}
+
+
+            model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,
+                                             models=models,param=params)
+            
 
             ## To get best model score from dict
             best_model_score = max(sorted(model_report.values()))
