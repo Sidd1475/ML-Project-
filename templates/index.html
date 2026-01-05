@@ -2,10 +2,145 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Student Performance Predictor</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 120px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            padding: 15px 32px;
+            font-size: 18px;
+            font-weight: bold;
+            background: #ffffff;
+            color: #667eea;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 100px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(6px);
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Welcome to homepage</h1>
+    <div class="container">
+
+        <!-- HERO SECTION -->
+        <div class="hero">
+            <h1>Student Exam Performance Predictor</h1>
+            <p>
+                A Machine Learning powered web application that predicts a student's
+                mathematics score based on demographic details, parental education,
+                lunch type, test preparation, and reading & writing scores.
+            </p>
+
+            <!-- CTA BUTTON -->
+            <a href="{{ url_for('predict_datapoint') }}" class="cta-btn">
+                Predict Student Score 🚀
+            </a>
+        </div>
+
+        <!-- FEATURES -->
+        <div class="features">
+            <div class="feature-card">
+                <h3>📊 ML Powered</h3>
+                <p>
+                    Built using advanced regression models trained on real student performance data.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>⚡ Fast Predictions</h3>
+                <p>
+                    Get instant score predictions through a simple and intuitive interface.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🎓 Education Focused</h3>
+                <p>
+                    Designed to help educators and students understand performance trends.
+                </p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            © 2026 Student Performance Predictor | Built with Flask & Machine Learning
+        </footer>
+
+    </div>
 </body>
 </html>
