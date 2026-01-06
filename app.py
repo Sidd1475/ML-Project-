@@ -17,6 +17,7 @@ def index():
 
 @app.route('/predictdata',methods=['GET','POST'])
 def predict_datapoint():
+  try:
     if request.method=='GET':
         return render_template('home.html')
     else:
@@ -35,6 +36,9 @@ def predict_datapoint():
         predict_pipeline = PredictPipeline()
         result = predict_pipeline.predict(pred_df)
         return render_template('home.html',results = result[0])
+  except Exception as e:
+     return f"Error:{str(e)}",500
+     
     
 if __name__=="__main__":
     app.run(host="0.0.0.0",debug=True)
